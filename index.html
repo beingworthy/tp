@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Line Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .section {
+            background-color: #fff;
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .section div {
+            width: 25%;
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .wide-section {
+            background-color: #fff;
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>e-ATV Production Line Layout</h1>
+    <div class="container">
+        
+        <!-- Storage Area -->
+        <div class="wide-section">
+            <strong>Storage Area</strong> <br>
+            (Raw Materials: Batteries, Chassis, Tires, Shocks, etc.)
+        </div>
+
+        <!-- Welding/Fabrication and Assembly Lines -->
+        <div class="section">
+            <div><strong>Welding/Fabrication 1</strong></div>
+            <div><strong>Assembly Line 1</strong></div>
+            <div><strong>Testing 1</strong></div>
+        </div>
+
+        <div class="section">
+            <div><strong>Welding/Fabrication 2</strong></div>
+            <div><strong>Assembly Line 2</strong></div>
+            <div><strong>Testing 2</strong></div>
+        </div>
+
+        <!-- Quality Control Section -->
+        <div class="wide-section">
+            <strong>Quality Control / Inspection Area</strong>
+        </div>
+
+        <!-- Packaging & Dispatch -->
+        <div class="wide-section">
+            <strong>Packaging & Dispatch Area</strong>
+        </div>
+
+        <!-- Finished Products Storage -->
+        <div class="wide-section">
+            <strong>Finished Products Storage (Warehouse)</strong>
+        </div>
+    </div>
+</body>
+</html>
