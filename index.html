@@ -8,35 +8,79 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
         }
+
         .container {
-            width: 80%;
-            margin: 0 auto;
+            width: 90%;
+            margin: 50px auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
-        .section {
-            background-color: #fff;
-            border: 2px solid #333;
+
+        .section, .wide-section {
+            background-color: #ffffff;
+            border: 2px solid #4CAF50;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-around;
             align-items: center;
+            position: relative;
+            transition: transform 0.3s ease;
         }
-        .section div {
+
+        .section div, .wide-section {
             width: 25%;
-            background-color: #e0e0e0;
+            background-color: #e0f7e0;
             padding: 10px;
-            border-radius: 8px;
-        }
-        .wide-section {
-            background-color: #fff;
-            border: 2px solid #333;
-            padding: 20px;
             border-radius: 10px;
+            border: 1px solid #ddd;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .wide-section {
+            width: 100%;
+            background-color: #fff8f0;
+        }
+
+        .section:hover, .wide-section:hover {
+            transform: translateY(-10px);
+        }
+
+        .section div:hover {
+            background-color: #c0e0c0;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Tooltip styling */
+        .tooltip {
+            display: none;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .section:hover .tooltip {
+            display: block;
         }
     </style>
 </head>
@@ -45,38 +89,83 @@
     <div class="container">
         
         <!-- Storage Area -->
-        <div class="wide-section">
+        <div class="wide-section" id="storage-area">
             <strong>Storage Area</strong> <br>
             (Raw Materials: Batteries, Chassis, Tires, Shocks, etc.)
         </div>
 
         <!-- Welding/Fabrication and Assembly Lines -->
         <div class="section">
-            <div><strong>Welding/Fabrication 1</strong></div>
-            <div><strong>Assembly Line 1</strong></div>
-            <div><strong>Testing 1</strong></div>
+            <div id="welding-1"><strong>Welding/Fabrication 1</strong>
+                <div class="tooltip">Welding Chassis & Frame</div>
+            </div>
+            <div id="assembly-1"><strong>Assembly Line 1</strong>
+                <div class="tooltip">Battery, Wiring, Suspension Installations</div>
+            </div>
+            <div id="testing-1"><strong>Testing 1</strong>
+                <div class="tooltip">Motor, Battery, Brakes Testing</div>
+            </div>
         </div>
 
         <div class="section">
-            <div><strong>Welding/Fabrication 2</strong></div>
-            <div><strong>Assembly Line 2</strong></div>
-            <div><strong>Testing 2</strong></div>
+            <div id="welding-2"><strong>Welding/Fabrication 2</strong>
+                <div class="tooltip">Welding Chassis & Frame</div>
+            </div>
+            <div id="assembly-2"><strong>Assembly Line 2</strong>
+                <div class="tooltip">Battery, Wiring, Suspension Installations</div>
+            </div>
+            <div id="testing-2"><strong>Testing 2</strong>
+                <div class="tooltip">Motor, Battery, Brakes Testing</div>
+            </div>
         </div>
 
         <!-- Quality Control Section -->
-        <div class="wide-section">
+        <div class="wide-section" id="quality-control">
             <strong>Quality Control / Inspection Area</strong>
+            <div class="tooltip">Random Checks and Batch Audits</div>
         </div>
 
         <!-- Packaging & Dispatch -->
-        <div class="wide-section">
+        <div class="wide-section" id="packaging-dispatch">
             <strong>Packaging & Dispatch Area</strong>
+            <div class="tooltip">Labeling, Boxing, Shipping</div>
         </div>
 
         <!-- Finished Products Storage -->
-        <div class="wide-section">
+        <div class="wide-section" id="warehouse">
             <strong>Finished Products Storage (Warehouse)</strong>
+            <div class="tooltip">Ready for Shipment</div>
         </div>
     </div>
+
+    <script>
+        // Add dynamic interaction to sections
+        document.querySelectorAll('.section, .wide-section').forEach(section => {
+            section.addEventListener('mouseover', function() {
+                this.style.backgroundColor = '#e6ffe6';
+            });
+            section.addEventListener('mouseout', function() {
+                this.style.backgroundColor = '#ffffff';
+            });
+        });
+
+        // Tooltip behavior for sections
+        const sections = document.querySelectorAll('.section div, .wide-section');
+        sections.forEach((section) => {
+            section.addEventListener('mouseover', function() {
+                const tooltip = this.querySelector('.tooltip');
+                if (tooltip) {
+                    tooltip.style.display = 'block';
+                }
+            });
+
+            section.addEventListener('mouseout', function() {
+                const tooltip = this.querySelector('.tooltip');
+                if (tooltip) {
+                    tooltip.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
