@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Production Line Layout</title>
+    <title>Production Line Layout with Arrows and Additional Sections</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,7 +18,8 @@
             margin: 50px auto;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 40px;
+            position: relative;
         }
 
         .section, .wide-section {
@@ -82,17 +83,53 @@
         .section:hover .tooltip {
             display: block;
         }
+
+        /* Arrows */
+        .arrow {
+            width: 30px;
+            height: 30px;
+            border: solid #4CAF50;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            position: relative;
+            margin: 20px auto;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+        }
+
+        .right {
+            transform: rotate(-45deg);
+        }
+
+        .down {
+            transform: rotate(45deg);
+        }
+
+        /* For larger arrows between sections */
+        .large-arrow {
+            width: 40px;
+            height: 40px;
+            border-width: 0 5px 5px 0;
+        }
     </style>
 </head>
 <body>
     <h1>e-ATV Production Line Layout</h1>
     <div class="container">
         
+        <!-- Supplier Area -->
+        <div class="wide-section" id="supplier-area">
+            <strong>Supplier Area</strong> <br>
+            (Raw Materials: Batteries, Chassis, Tires, Shocks, etc.)
+        </div>
+        <div class="arrow down large-arrow"></div>
+        
         <!-- Storage Area -->
         <div class="wide-section" id="storage-area">
             <strong>Storage Area</strong> <br>
-            (Raw Materials: Batteries, Chassis, Tires, Shocks, etc.)
+            (Stored Raw Materials)
         </div>
+        <div class="arrow down large-arrow"></div>
 
         <!-- Welding/Fabrication and Assembly Lines -->
         <div class="section">
@@ -106,6 +143,7 @@
                 <div class="tooltip">Motor, Battery, Brakes Testing</div>
             </div>
         </div>
+        <div class="arrow down large-arrow"></div>
 
         <div class="section">
             <div id="welding-2"><strong>Welding/Fabrication 2</strong>
@@ -118,18 +156,28 @@
                 <div class="tooltip">Motor, Battery, Brakes Testing</div>
             </div>
         </div>
+        <div class="arrow down large-arrow"></div>
+
+        <!-- Paint Booth -->
+        <div class="wide-section" id="paint-booth">
+            <strong>Paint Booth</strong>
+            <div class="tooltip">Painting Frames and Components</div>
+        </div>
+        <div class="arrow down large-arrow"></div>
 
         <!-- Quality Control Section -->
         <div class="wide-section" id="quality-control">
             <strong>Quality Control / Inspection Area</strong>
             <div class="tooltip">Random Checks and Batch Audits</div>
         </div>
+        <div class="arrow down large-arrow"></div>
 
         <!-- Packaging & Dispatch -->
         <div class="wide-section" id="packaging-dispatch">
             <strong>Packaging & Dispatch Area</strong>
             <div class="tooltip">Labeling, Boxing, Shipping</div>
         </div>
+        <div class="arrow down large-arrow"></div>
 
         <!-- Finished Products Storage -->
         <div class="wide-section" id="warehouse">
